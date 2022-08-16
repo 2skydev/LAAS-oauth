@@ -11,16 +11,7 @@
       (async () => {
         try {
           const token = Qs.parse(window.location.hash.replace('#', '')).access_token;
-
-          const res = await fetch('https://discord.com/api/v10/users/@me', {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          });
-
-          const data = await res.json();
-
-          window.location.href = `laas://oauth/discord/${data.id}`
+          window.location.href = `laas://oauth/discord/${token}`
         } catch (error) {
           alert('디스코드 연동에 실패했습니다.');
         }
